@@ -1,0 +1,128 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>TikTok OAuth - Dumplin AI</title>
+    <style>
+      body {
+        font-family: "Segoe UI", Tahoma, Geneva, Verdana, sans-serif;
+        background: linear-gradient(135deg, #ff0050 0%, #00f2ea 100%);
+        margin: 0;
+        padding: 0;
+        min-height: 100vh;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+      }
+      .container {
+        background: white;
+        padding: 2rem;
+        border-radius: 15px;
+        box-shadow: 0 10px 30px rgba(0, 0, 0, 0.2);
+        text-align: center;
+        max-width: 400px;
+        width: 90%;
+      }
+      .logo {
+        font-size: 2rem;
+        font-weight: bold;
+        color: #333;
+        margin-bottom: 1rem;
+      }
+      .status {
+        padding: 1rem;
+        background: #f8f9fa;
+        border-radius: 8px;
+        margin-bottom: 1rem;
+      }
+      .success {
+        border-left: 4px solid #28a745;
+        color: #155724;
+      }
+      .error {
+        border-left: 4px solid #dc3545;
+        color: #721c24;
+      }
+      .info {
+        font-size: 0.9rem;
+        color: #666;
+        line-height: 1.5;
+      }
+      .spinner {
+        border: 3px solid #f3f3f3;
+        border-top: 3px solid #ff0050;
+        border-radius: 50%;
+        width: 30px;
+        height: 30px;
+        animation: spin 1s linear infinite;
+        margin: 1rem auto;
+      }
+      @keyframes spin {
+        0% {
+          transform: rotate(0deg);
+        }
+        100% {
+          transform: rotate(360deg);
+        }
+      }
+    </style>
+  </head>
+  <body>
+    <div class="container">
+      <div class="logo">🍜 Dumplin AI</div>
+      <div id="status" class="status">
+        <div class="spinner"></div>
+        <div>Processing TikTok authentication...</div>
+      </div>
+
+      <div class="info">
+        This page handles TikTok OAuth redirects for the Dumplin AI mobile app.
+      </div>
+    </div>
+
+    <script>
+      // Handle OAuth redirect parameters
+      const urlParams = new URLSearchParams(window.location.search);
+      const code = urlParams.get("code");
+      const state = urlParams.get("state");
+      const error = urlParams.get("error");
+      const errorDescription = urlParams.get("error_description");
+
+      const statusDiv = document.getElementById("status");
+
+      if (code) {
+        console.log("TikTok OAuth code received:", code);
+        statusDiv.innerHTML = `
+                <div style="color: #28a745; font-weight: bold;">✅ Authentication Successful!</div>
+                <div style="margin-top: 0.5rem;">Authorization code received. You can close this window.</div>
+            `;
+        statusDiv.className = "status success";
+      } else if (error) {
+        console.error("TikTok OAuth error:", error, errorDescription);
+        statusDiv.innerHTML = `
+                <div style="color: #dc3545; font-weight: bold;">❌ Authentication Failed</div>
+                <div style="margin-top: 0.5rem;">Error: ${error}</div>
+                ${
+                  errorDescription
+                    ? `<div style="margin-top: 0.5rem;">${errorDescription}</div>`
+                    : ""
+                }
+            `;
+        statusDiv.className = "status error";
+      } else {
+        statusDiv.innerHTML = `
+                <div style="color: #666;">ℹ️ No authentication data received</div>
+                <div style="margin-top: 0.5rem;">This page is ready to handle TikTok OAuth redirects.</div>
+            `;
+      }
+
+      // Auto-close after 3 seconds if successful
+      if (code) {
+        setTimeout(() => {
+          window.close();
+        }, 3000);
+      }
+    </script>
+  </body>
+</html>

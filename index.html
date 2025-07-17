@@ -1,0 +1,83 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Dumplin AI - TikTok OAuth</title>
+    <style>
+      body {
+        font-family: "Segoe UI", Tahoma, Geneva, Verdana, sans-serif;
+        background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+        margin: 0;
+        padding: 0;
+        min-height: 100vh;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+      }
+      .container {
+        background: white;
+        padding: 2rem;
+        border-radius: 15px;
+        box-shadow: 0 10px 30px rgba(0, 0, 0, 0.2);
+        text-align: center;
+        max-width: 400px;
+        width: 90%;
+      }
+      .logo {
+        font-size: 2rem;
+        font-weight: bold;
+        color: #333;
+        margin-bottom: 1rem;
+      }
+      .subtitle {
+        color: #666;
+        margin-bottom: 2rem;
+      }
+      .status {
+        padding: 1rem;
+        background: #f8f9fa;
+        border-radius: 8px;
+        border-left: 4px solid #28a745;
+        margin-bottom: 1rem;
+      }
+      .redirect-info {
+        font-size: 0.9rem;
+        color: #888;
+        line-height: 1.5;
+      }
+    </style>
+  </head>
+  <body>
+    <div class="container">
+      <div class="logo">🍜 Dumplin AI</div>
+      <div class="subtitle">TikTok OAuth Redirect Handler</div>
+
+      <div class="status">✅ OAuth redirect endpoint is active</div>
+
+      <div class="redirect-info">
+        This page handles TikTok OAuth redirects for the Dumplin AI mobile
+        app.<br />
+        URL: <strong>https://abrarshahok.github.io/dumplin/auth/tiktok</strong>
+      </div>
+    </div>
+
+    <script>
+      // Handle OAuth redirect parameters
+      const urlParams = new URLSearchParams(window.location.search);
+      const code = urlParams.get("code");
+      const state = urlParams.get("state");
+      const error = urlParams.get("error");
+      const errorDescription = urlParams.get("error_description");
+
+      if (code) {
+        console.log("TikTok OAuth code received:", code);
+        // You can add custom handling here if needed
+      }
+
+      if (error) {
+        console.error("TikTok OAuth error:", error, errorDescription);
+      }
+    </script>
+  </body>
+</html>

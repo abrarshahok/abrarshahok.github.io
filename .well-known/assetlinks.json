@@ -1,0 +1,12 @@
+[
+  {
+    "relation": ["delegate_permission/common.handle_all_urls"],
+    "target": {
+      "namespace": "android_app",
+      "package_name": "com.example.dumplin_ai",
+      "sha256_cert_fingerprints": [
+        "37:01:B2:80:D9:DB:13:94:33:A2:33:FE:AB:4E:3E:99:35:F9:D2:8B:31:FA:59:0F:2F:8E:81:77:13:90:67:A5"
+      ]
+    }
+  }
+]
