@@ -1,11 +1,26 @@
 [
   {
-    "relation": ["delegate_permission/common.handle_all_urls"],
+    "relation": [
+      "delegate_permission/common.handle_all_urls"
+    ],
     "target": {
       "namespace": "android_app",
       "package_name": "com.example.dumplin_ai",
       "sha256_cert_fingerprints": [
         "37:01:B2:80:D9:DB:13:94:33:A2:33:FE:AB:4E:3E:99:35:F9:D2:8B:31:FA:59:0F:2F:8E:81:77:13:90:67:A5"
+      ]
+    }
+  },
+  {
+    "relation": [
+      "delegate_permission/common.handle_all_urls",
+      "delegate_permission/common.get_login_creds"
+    ],
+    "target": {
+      "namespace": "android_app",
+      "package_name": "ai.dumplin.app",
+      "sha256_cert_fingerprints": [
+        "8F:6B:DF:D5:8B:D6:49:29:C8:0C:18:D7:9F:74:16:64:FC:D5:9A:7E:92:4E:7B:B0:5C:B3:C9:C6:B2:53:F9:43"
       ]
     }
   }
